@@ -1,0 +1,18 @@
+﻿Option Explicit
+'Script written by <Junichiro Horikawa>
+'Script copyrighted by <Junichiro Horikawa>
+'Script version 2012年4月3日 23:25:48
+
+Call Main()
+Sub Main()
+	Dim arrLayers, strLayer, arrObjs
+	arrLayers = Rhino.GetLayers("Select Layers")
+	Rhino.UnselectAllObjects()
+	If IsArray(arrLayers) Then
+		For Each strLayer In arrLayers
+			arrObjs = Rhino.ObjectsByLayer(strLayer)
+			Rhino.ShowObjects(arrObjs)
+			Rhino.SelectObjects(arrObjs)
+		Next
+	End If
+End Sub
